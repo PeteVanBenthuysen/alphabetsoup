@@ -19,7 +19,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="bg-[#4F6D7A] border-b-2 border-[#DD6E42] px-8 py-4 flex justify-between items-center shadow-md relative">
+    <nav className="bg-[#4F6D7A] border-b-2 border-[#DD6E42] px-8 py-4 flex justify-between items-center shadow-md relative z-30">
       {/* Left: Social Icons and Site name/logo */}
       <div className="flex items-center gap-4">
         <a

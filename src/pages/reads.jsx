@@ -187,10 +187,15 @@ function Reads() {
     fetchLatest();
   }, []);
 
+  // Blue-gray color for headings and tags
+  const blueGray = "#4F6D7A";
+
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-[#C0D6DF] text-[#4F6D7A] text-center font-semibold">
-      <h1 className="text-3xl font-semibold mb-4 tracking-wide text-[#DD6E42]">Reads & Recommendations</h1>
-      <p className="max-w-xl mb-6 text-lg font-semibold">
+    <div className="min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-[#C0D6DF] text-[#4F6D7A] text-center font-sans">
+      <h1 className="text-3xl font-semibold mb-4 tracking-wide text-[#4F6D7A]">
+        Reads & Recommendations
+      </h1>
+      <p className="max-w-xl mb-6 text-lg font-normal text-[#4F6D7A]">
         Here is a curated selection of newsletters and resources I highly recommend.
       </p>
       {/* Tag filter buttons */}

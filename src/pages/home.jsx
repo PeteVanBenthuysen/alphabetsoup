@@ -34,7 +34,9 @@ function Home() {
     }
   };
 
-  const letterConfigs = [
+  // Responsive letter configs for mobile and desktop
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
+  const letterConfigsDesktop = [
     { src: "/letters/letterW.png", alt: "W", top: "25%", left: "-100%", delay: "0.5s" },
     { src: "/letters/letterE.png", alt: "E", top: "27%", left: "-60%", delay: "1s" },
     { src: "/letters/letterL.png", alt: "L", top: "25%", left: "-20%", delay: "1.5s" },
@@ -43,10 +45,21 @@ function Home() {
     { src: "/letters/letterM.png", alt: "M", top: "27%", left: "100%", delay: "3s" },
     { src: "/letters/letterE.png", alt: "E", top: "25%", left: "140%", delay: "3.5s" },
   ];
+  const letterConfigsMobile = [
+    { src: "/letters/letterW.png", alt: "W", top: "10%", left: "10%", delay: "0.5s" },
+    { src: "/letters/letterE.png", alt: "E", top: "30%", left: "25%", delay: "1s" },
+    { src: "/letters/letterL.png", alt: "L", top: "50%", left: "15%", delay: "1.5s" },
+    { src: "/letters/letterC.png", alt: "C", top: "20%", left: "55%", delay: "2s" },
+    { src: "/letters/letterO.png", alt: "O", top: "45%", left: "60%", delay: "2.5s" },
+    { src: "/letters/letterM.png", alt: "M", top: "60%", left: "40%", delay: "3s" },
+    { src: "/letters/letterE.png", alt: "E", top: "70%", left: "70%", delay: "3.5s" },
+  ];
+  const letterConfigs = isMobile ? letterConfigsMobile : letterConfigsDesktop;
 
   const rotations = useMemo(
     () => letterConfigs.map(() => `${Math.floor(Math.random() * 25) - 12}deg`),
-    []
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [isMobile]
   );
 
   if (!unlocked) {
@@ -110,11 +123,11 @@ function Home() {
   return (
     <div className="relative flex flex-col items-center min-h-screen bg-[#C0D6DF] text-[#4F6D7A] pt-24">
       {/* SVG positioned at the top center */}
-      <div className="absolute left-1/2 top-8 -translate-x-1/2 z-10">
+      <div className="w-full flex justify-center z-10 mt-2">
         <svg
           key={svgKey}
           viewBox="0 0 400 112"
-          className="w-48 sm:w-64 md:w-96 lg:w-[32rem] h-auto text-[#4F6D7A]"
+          className="w-11/12 max-w-xs sm:max-w-md md:max-w-2xl h-auto text-[#4F6D7A]"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
