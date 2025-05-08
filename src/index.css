@@ -1,0 +1,59 @@
+/* Tailwind base styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: var(--svg-path-length, 2333.43);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-write {
+  stroke-dasharray: var(--svg-path-length, 2333.43);
+  stroke-dashoffset: var(--svg-path-length, 2333.43);
+  fill: transparent; /* Start transparent */
+  stroke: #4F6D7A;
+  stroke-width: 1.2;
+  opacity: 1;
+  /* Combine both animations in one property */
+  animation:
+    draw 5s ease-out forwards,
+    fillIn 5s ease-out forwards;
+}
+
+@keyframes fillIn {
+  from { fill: #4F6D7A; }
+  to   { fill: #4F6D7A; }
+}
+
+/* Fade In Soup Animation */
+@keyframes fadeInSoup {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Updated drift: drift once and stop */
+@keyframes soup-drift-once {
+  0%   { transform: translate(0, 0) rotate(var(--rotation)); }
+  100% { transform: translate(8px, -8px) rotate(var(--rotation)); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.fade-in-drift {
+  opacity: 0;
+  animation: fadeIn 1s ease forwards, soup-drift-once 3s ease-in-out 1 forwards;
+}
