@@ -163,12 +163,19 @@ function Home() {
         </svg>
       </div>
       {/* Main content centered below SVG */}
-      <div className="flex flex-col items-center justify-center w-full mt-16">
-        <p className="text-lg mt-2 text-center max-w-2xl text-[#4F6D7A]">
-          I'm Pete VanBenthuysen—a data scientist with a passion for applying mathematical modeling, system design, and statistical thinking to build robust, data-driven results.<br /><br />
-          My last name spans half the alphabet, which inspired the name <span className="text-[#DD6E42] font-semibold"><em>Alphabet Soup</em></span>. But it’s more than just a play on letters—like a good bowl of soup, my work brings together many ingredients: different languages, frameworks, and ideas, all simmered into cohesive, scalable solutions.<br /><br />
-          This portfolio reflects that philosophy—mixing precision and creativity to craft models with depth and flavor.
-        </p>
+      <div className="flex flex-col items-center justify-center w-full px-6 py-20">
+        <div className="max-w-2xl w-full mx-auto text-left">
+          <p className="mb-6 text-lg">
+            I'm Pete VanBenthuysen—a data scientist with a passion for applying mathematical modeling, system design, and statistical thinking to build robust, data-driven results.
+          </p>
+          <p className="mb-6 text-lg">
+            My last name spans half the alphabet, which inspired the name <span className="font-semibold text-[#DD6E42]">Alphabet Soup</span>. But it’s more than just a play on letters—like a good bowl of soup, my work brings together many ingredients: different languages, frameworks, and ideas, all simmered into cohesive, scalable solutions.
+          </p>
+          <p className="mb-6 text-lg">
+            This portfolio reflects that philosophy—mixing precision and creativity to craft models with depth and flavor.
+          </p>
+        </div>
+        {/* ...rest of your home page... */}
       </div>
     </div>
   );
