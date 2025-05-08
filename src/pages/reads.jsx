@@ -1,67 +1,106 @@
+import { useEffect, useState } from "react";
+
+const substackList = [
+  {
+    name: "Every",
+    url: "https://every.to/",
+    image: "https://every.to/favicon.ico",
+    author: "Dan Shipper",
+    feed: "https://every.to/feed",
+  },
+  {
+    name: "Silver Bulletin",
+    url: "https://www.natesilver.net/",
+    image: "https://www.natesilver.net/favicon.ico",
+    author: "Nate Silver",
+    feed: "https://www.natesilver.net/feed",
+  },
+  // Add more substacks here
+];
+
 function Reads() {
-    return (
-      <div className="min-h-screen bg-[#C0D6DF] text-[#4F6D7A] px-6 py-16 flex flex-col items-center">
-        <h1 className="text-3xl font-bold mb-4 tracking-wide text-[#DD6E42]">Reads & Recommendations</h1>
-        <p className="mb-8 max-w-2xl text-lg text-center">
-          Here are some books and Substack articles I recommend, plus my own Substack!
-        </p>
-        <div className="w-full max-w-xl space-y-6">
-          <div>
-            <h2 className="text-xl font-semibold text-[#DD6E42] mb-2">Books</h2>
-            <ul className="list-disc list-inside space-y-1">
-              <li>
+  const [latestPosts, setLatestPosts] = useState({});
+
+  useEffect(() => {
+    async function fetchLatest() {
+      const results = {};
+      for (const substack of substackList) {
+        try {
+          const res = await fetch(
+            `https://api.allorigins.win/get?url=${encodeURIComponent(substack.feed)}`
+          );
+          const data = await res.json();
+          const parser = new window.DOMParser();
+          const xml = parser.parseFromString(data.contents, "text/xml");
+          const item = xml.querySelector("item");
+          if (item) {
+            results[substack.url] = {
+              title: item.querySelector("title")?.textContent,
+              link: item.querySelector("link")?.textContent,
+            };
+          }
+        } catch (e) {
+          results[substack.url] = { title: "Could not fetch", link: "#" };
+        }
+      }
+      setLatestPosts(results);
+    }
+    fetchLatest();
+  }, []);
+
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-[#C0D6DF] text-[#4F6D7A] text-center">
+      <h1 className="text-3xl font-semibold mb-4 tracking-wide">Reads & Recommendations</h1>
+      <p className="max-w-xl mb-6 text-lg">
+        Here are some Substack newsletters and books I recommend!
+      </p>
+      <div className="w-full max-w-5xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {substackList.map((substack) => (
+          <div
+            key={substack.url}
+            className="bg-white/80 rounded-lg shadow p-6 flex flex-col items-start text-left"
+          >
+            {substack.image && (
+              <img
+                src={substack.image}
+                alt={`${substack.name} logo`}
+                className="w-12 h-12 mb-3 rounded"
+              />
+            )}
+            <div className="mb-2">
+              <span className="text-xl font-semibold text-[#DD6E42]">{substack.name}</span>
+            </div>
+            <span className="text-sm text-[#6A4E42] mb-2">by {substack.author}</span>
+            <div className="mb-4">
+              <span className="text-[#4F6D7A]">Latest: </span>
+              {latestPosts[substack.url] ? (
                 <a
-                  href="https://www.goodreads.com/book/show/25666050-deep-work"
-                  className="underline hover:text-[#DD6E42]"
+                  href={latestPosts[substack.url].link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="px-4 py-1 border border-[#DD6E42] rounded-full text-[#DD6E42] text-sm tracking-wide uppercase bg-transparent hover:bg-[#DD6E42] hover:text-white transition"
                 >
-                  Deep Work by Cal Newport
+                  {latestPosts[substack.url].title}
                 </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.goodreads.com/book/show/40796177-range"
-                  className="underline hover:text-[#DD6E42]"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Range by David Epstein
-                </a>
-              </li>
-              {/* Add more books here */}
-            </ul>
-          </div>
-          <div>
-            <h2 className="text-xl font-semibold text-[#DD6E42] mb-2">Substack Articles</h2>
-            <ul className="list-disc list-inside space-y-1">
-              <li>
-                <a
-                  href="https://your-favorite-substack.com/article"
-                  className="underline hover:text-[#DD6E42]"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Great Article Title
-                </a>
-              </li>
-              {/* Add more articles here */}
-            </ul>
-          </div>
-          <div>
-            <h2 className="text-xl font-semibold text-[#DD6E42] mb-2">My Substack</h2>
+              ) : (
+                <span className="px-4 py-1 border border-[#DD6E42] rounded-full text-[#DD6E42] text-sm tracking-wide uppercase bg-transparent">
+                  Loading...
+                </span>
+              )}
+            </div>
             <a
-              href="https://your-substack-url.substack.com"
-              className="underline hover:text-[#DD6E42]"
+              href={substack.url}
               target="_blank"
               rel="noopener noreferrer"
+              className="mt-auto px-4 py-1 border border-[#DD6E42] rounded-full text-[#DD6E42] text-sm tracking-wide uppercase bg-transparent hover:bg-[#DD6E42] hover:text-white transition"
             >
-              Visit my Substack
+              Follow
             </a>
           </div>
-        </div>
+        ))}
       </div>
-    );
-  }
-  
-  export default Reads;
+    </div>
+  );
+}
+
+export default Reads;
