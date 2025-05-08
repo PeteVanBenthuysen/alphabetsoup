@@ -156,8 +156,7 @@ function Reads() {
 
   useEffect(() => {
     async function fetchLatest() {
-      const results = {};
-      for (const substack of substackList) {
+      const fetches = substackList.map(async (substack) => {
         try {
           const res = await fetch(
             `https://ilnvf97s6d.execute-api.us-east-2.amazonaws.com/default/UpdatedSubstack?url=${encodeURIComponent(substack.feed)}`
@@ -167,15 +166,22 @@ function Reads() {
           const xml = parser.parseFromString(xmlText, "text/xml");
           const item = xml.querySelector("item");
           if (item) {
-            results[substack.url] = {
-              title: item.querySelector("title")?.textContent,
-              link: item.querySelector("link")?.textContent,
-            };
+            return [
+              substack.url,
+              {
+                title: item.querySelector("title")?.textContent,
+                link: item.querySelector("link")?.textContent,
+              },
+            ];
           }
         } catch (e) {
-          results[substack.url] = { title: "Could not fetch", link: "#" };
+          // ignore
         }
-      }
+        return [substack.url, { title: "Could not fetch", link: "#" }];
+      });
+
+      const resultsArr = await Promise.all(fetches);
+      const results = Object.fromEntries(resultsArr);
       setLatestPosts(results);
     }
     fetchLatest();
