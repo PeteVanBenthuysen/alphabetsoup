@@ -196,7 +196,7 @@ function Reads() {
         Reads & Recommendations
       </h1>
       <p className="max-w-xl mb-6 text-lg font-normal text-[#4F6D7A]">
-        Here is a curated selection of newsletters and resources I highly recommend.
+        A curated selection of newsletters and resources I highly recommend.
       </p>
       {/* Tag filter buttons */}
       <div className="flex flex-wrap gap-2 mb-8 justify-center">
@@ -288,6 +288,60 @@ function Reads() {
             </div>
           </div>
         ))}
+      </div>
+      {/* Book Covers Section */}
+      <div className="mt-16 w-full flex flex-col items-center">
+        <p className="text-center mb-8 text-lg max-w-3xl mx-auto">
+         We’re surrounded by endless content, but I still turn to books as the most focused and enduring source of insight. This is a diverse collection of titles that have had a lasting impact on how I think, work, and learn. The list is always evolving.
+        </p>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 justify-items-center">
+          <img src="/books/7habits.jpg" alt="The 7 Habits of Highly Effective People" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/ascentofmoney.jpg" alt="The Ascent of Money" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/atomichabits.jpg" alt="Atomic Habits" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/basketballlikeagenius.jpg" alt="How to Watch Basketball Like a Genius" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/beingwrong.jpg" alt="The Algebra of Wealth" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/buildingmachinelearning.jpg" alt="Radical Candor" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/changingworldorder.jpg" alt="Never Split the Difference" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/chipwar.jpg" alt="Not the End of the World" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/everybodylies.jpg" alt="Trouble" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/expectedgoals.jpg" alt="Slow Productivity" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/funway.jpg" alt="Breaking Through" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/gametheory.jpg" alt="The End of Race Politics" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/hatethegame.jpg" alt="The Untethered Soul" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/kitchenconfidential.jpeg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/interception.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/liarspoker.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/manforallmarkets.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/mediumraw.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/navyseal.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/ontheedge.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/optionsderivatives.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/outliers.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/predictionmachines.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/psychologyofmoney.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/quants.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/subtleart.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/sameasever.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/statisticsfordatascientists.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/talkingtostrangers.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/thebigshort.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/thebook.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/therighteousmind.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/thesignal.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/theundoingproject.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/thinkbayes.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/thinkingfastandslow.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/thinkinginbets.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/tigerwoods.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/toobigtofail.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/westrules.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/withcoughbytaylor.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/tippingpoint.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/mathematicalthinking.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/happier.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          <img src="/books/thinkingclearly.jpg" alt="Intelligence" className="w-44 h-60 object-cover rounded shadow" />
+          {/* Add more <img> tags for each book as needed */}
+        </div>
       </div>
     </div>
   );
